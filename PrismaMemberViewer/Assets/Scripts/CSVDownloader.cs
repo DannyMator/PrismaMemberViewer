@@ -13,10 +13,10 @@ public static class CSVDownloader
 
         string downloadData = null;
         using (UnityWebRequest webRequest = UnityWebRequest.Get(url)){
-            Debug.Log("Starting Download...");
+            Debug.Log("Starting Data Download...");
             yield return webRequest.SendWebRequest();
-            if (webRequest.isNetworkError){
-                Debug.Log("Download Error: " + webRequest.error);
+            if (webRequest.isNetworkError || webRequest.isHttpError){
+                Debug.Log("Data Download Error: " + webRequest.error);
             }
             else
             {
